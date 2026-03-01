@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
-import { useVirtual } from 'react-virtualizer';
-import api from '../../services/api';
+import { useVirtualizer } from '@tanstack/react-virtual';
+import { useEffect, useRef, useState } from 'react';
 import { FiDownload, FiFilter, FiRefreshCw } from 'react-icons/fi';
+import { useFilters, usePagination, useSortBy, useTable } from 'react-table';
+import api from '../../services/api';
 
 export default function DataTable({ dataset }) {
   const [data, setData] = useState([]);
@@ -107,10 +107,10 @@ export default function DataTable({ dataset }) {
   );
 
   // Virtual rows
-  const rowVirtualizer = useVirtual({
-    size: page.length,
-    parentRef: tableContainerRef,
-    estimateSize: useCallback(() => 35, []),
+  const rowVirtualizer = useVirtualizer({
+    count: page.length,
+    getScrollElement: () => tableContainerRef.current,
+    estimateSize: () => 35,
     overscan: 5
   });
 

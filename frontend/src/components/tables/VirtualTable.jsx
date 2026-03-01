@@ -1,7 +1,7 @@
-import { useMemo, useRef, useCallback } from 'react';
-import { useTable, useSortBy, useFilters } from 'react-table';
-import { useVirtual } from 'react-virtual';
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import { useVirtualizer } from '@tanstack/react-virtual';
+import { useRef } from 'react';
+import { FiArrowDown, FiArrowUp } from 'react-icons/fi';
+import { useFilters, useSortBy, useTable } from 'react-table';
 
 export default function VirtualTable({ 
   columns, 
@@ -27,10 +27,10 @@ export default function VirtualTable({
     useSortBy
   );
 
-  const rowVirtualizer = useVirtual({
-    size: rows.length,
-    parentRef: tableContainerRef,
-    estimateSize: useCallback(() => rowHeight, [rowHeight]),
+  const rowVirtualizer = useVirtualizer({
+    count: rows.length,
+    getScrollElement: () => tableContainerRef.current,
+    estimateSize: () => rowHeight,
     overscan: 10
   });
 

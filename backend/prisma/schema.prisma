@@ -12,7 +12,7 @@ model User {
   email            String             @unique
   password         String
   name             String?
-  role             Role               @default(USER)
+  role             String             @default("USER")
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   datasets         Dataset[]
@@ -27,7 +27,7 @@ model Dataset {
   fileName    String
   filePath    String
   rowCount    Int
-  columns     Json
+  columns     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   userId      String
@@ -38,7 +38,7 @@ model Dataset {
 model DashboardLayout {
   id        String   @id @default(cuid())
   name      String
-  layout    Json
+  layout    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    String
@@ -48,7 +48,7 @@ model DashboardLayout {
 model Log {
   id        String   @id @default(cuid())
   action    String
-  details   Json?
+  details   String?
   createdAt DateTime @default(now())
   userId    String?
   user      User?    @relation(fields: [userId], references: [id])
@@ -60,7 +60,3 @@ model Log {
   @@index([createdAt])
 }
 
-enum Role {
-  ADMIN
-  USER
-}
