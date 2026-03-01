@@ -1,0 +1,37 @@
+{
+  "name": "analytics-dashboard-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.0.0-beta.68",
+    "axios": "^1.6.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "jwt-decode": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-grid-layout": "^1.4.4",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
+    "react-resizable": "^3.0.5",
+    "react-router-dom": "^6.18.0",
+    "react-table": "^7.8.0",
+    "recharts": "^2.9.0",
+    "zustand": "^4.4.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^7.3.1"
+  }
+}

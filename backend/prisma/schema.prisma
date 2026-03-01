@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id               String             @id @default(cuid())
+  email            String             @unique
+  password         String
+  name             String?
+  role             Role               @default(USER)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  datasets         Dataset[]
+  dashboardLayouts DashboardLayout[]
+  logs             Log[]
+}
+
+model Dataset {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  fileName    String
+  filePath    String
+  rowCount    Int
+  columns     Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  logs        Log[]
+}
+
+model DashboardLayout {
+  id        String   @id @default(cuid())
+  name      String
+  layout    Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Log {
+  id        String   @id @default(cuid())
+  action    String
+  details   Json?
+  createdAt DateTime @default(now())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  datasetId String?
+  dataset   Dataset? @relation(fields: [datasetId], references: [id])
+
+  @@index([userId])
+  @@index([datasetId])
+  @@index([createdAt])
+}
+
+enum Role {
+  ADMIN
+  USER
+}

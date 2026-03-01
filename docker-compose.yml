@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: analytics
+      POSTGRES_DB: analytics
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgresql://analytics:analytics@postgres:5432/analytics
+      JWT_SECRET: your-secret-key
+      ANALYTICS_ENGINE_URL: http://analytics-engine:8000
+      CLIENT_ORIGIN: http://localhost:5173
+    depends_on:
+      - postgres
+      - analytics-engine
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  analytics-engine:
+    build: ./analytics-engine
+    ports:
+      - "8000:8000"
+    environment:
+      ALLOWED_ORIGINS: http://localhost:5000
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

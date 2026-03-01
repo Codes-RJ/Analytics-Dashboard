@@ -1,0 +1,16 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background for dark mode -->
+  <rect width="200" height="50" rx="10" fill="#1F2937"/>
+  
+  <!-- Chart Icon - White -->
+  <path d="M30 25 L40 15 L50 25 L60 10 L70 30" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="30" cy="25" r="4" fill="white"/>
+  <circle cx="40" cy="15" r="4" fill="white"/>
+  <circle cx="50" cy="25" r="4" fill="white"/>
+  <circle cx="60" cy="10" r="4" fill="white"/>
+  <circle cx="70" cy="30" r="4" fill="white"/>
+  
+  <!-- Text - White with Blue Accent -->
+  <text x="90" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Analytics</text>
+  <text x="160" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#60A5FA">Dash</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cloud Background -->
+  <circle cx="100" cy="100" r="90" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2" stroke-dasharray="6 6"/>
+  
+  <!-- Upload Arrow -->
+  <circle cx="100" cy="100" r="40" fill="#DBEAFE" stroke="#3B82F6" stroke-width="3"/>
+  <path d="M100 70 L100 110 M85 85 L100 70 L115 85" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- File Icons -->
+  <rect x="60" y="120" width="25" height="35" rx="4" fill="#9CA3AF" opacity="0.3"/>
+  <rect x="65" y="115" width="25" height="35" rx="4" fill="#6B7280" opacity="0.5"/>
+  <rect x="70" y="110" width="25" height="35" rx="4" fill="#4B5563"/>
+  <text x="82" y="135" text-anchor="middle" fill="white" font-size="10" font-family="Arial">CSV</text>
+  
+  <rect x="110" y="120" width="25" height="35" rx="4" fill="#9CA3AF" opacity="0.3"/>
+  <rect x="115" y="115" width="25" height="35" rx="4" fill="#6B7280" opacity="0.5"/>
+  <rect x="120" y="110" width="25" height="35" rx="4" fill="#4B5563"/>
+  <text x="132" y="135" text-anchor="middle" fill="white" font-size="10" font-family="Arial">XLSX</text>
+  
+  <!-- Upload Text -->
+  <text x="100" y="170" text-anchor="middle" fill="#1F2937" font-size="14" font-family="Arial" font-weight="bold">Drag & Drop</text>
+  <text x="100" y="190" text-anchor="middle" fill="#6B7280" font-size="12" font-family="Arial">or click to browse</text>
+</svg>
